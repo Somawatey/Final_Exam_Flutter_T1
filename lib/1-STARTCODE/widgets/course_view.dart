@@ -19,15 +19,13 @@ class _CourseDetailsViewState extends State<CourseDetailsView> {
           IconButton(
             icon: const Icon(Icons.add),
             onPressed: () async {
-              final result = await Navigator.push(
+                await Navigator.push(
                 context,
                 MaterialPageRoute(
                   builder: (context) => AddScoreForm(course: widget.course),
                 ),
               );
-              if (result == true) {
                 setState(() {});
-              }
             },
           )
         ],

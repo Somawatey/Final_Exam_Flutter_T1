@@ -11,23 +11,30 @@ class MyApp extends StatelessWidget {
   MyApp({super.key});
     final courses = [
       Course(
-        name: 'Math',
+        name: 'HTML',
         studentScores: [
-          StudentScore(name: 'kiki', score: 85.0),
-          StudentScore(name: 'mimi', score: 10.0),
-          StudentScore(name: 'tt', score: 92.0),
+          StudentScore(name: 'Ronan the best', score: 100),
+          StudentScore(name: 'Vichea Cry', score: 40),
+          StudentScore(name: 'Sokea Amazon', score: 90),
         ],
       ),
       Course(
-        name: 'Science',
+        name: 'Java',
         studentScores: [],
+      ),
+      Course(
+        name: 'Python',
+        studentScores: [
+          StudentScore(name: 'Ronan the best', score: 100),
+          StudentScore(name: 'Vichea Cry', score: 40),
+          StudentScore(name: 'Sokea Amazon', score: 90),
+        ],
       ),
     ];
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
- 
       home: CoursesView(courses: courses),
       );
   }

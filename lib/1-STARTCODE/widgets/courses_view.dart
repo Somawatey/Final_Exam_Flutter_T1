@@ -26,16 +26,19 @@ class _CoursesViewState extends State<CoursesView> {
           final scoreCount = course.studentScores.length;
           final averageScore = scoreCount > 0
               ? course.studentScores
-                      .map((e) => e.score)
-                      .reduce((a, b) => a + b) /
+                      .map((e) => e.score) 
+                      .reduce((a, b) => a + b) /    
                   scoreCount
               : 0.0;
 
           return Card(
-            child: ListTile(
+            margin: const EdgeInsets.all(8),
+            child: SizedBox(
+              height: 75,
+              child: ListTile(
               title: Text(course.name),
               subtitle: Text(scoreCount > 0
-                  ? '$scoreCount scores\nAverage ${averageScore.toStringAsFixed(1)} '
+                  ? '$scoreCount scores\nAverage ${averageScore.toStringAsFixed(1)} ' 
                   : 'No scores'),
               onTap: () async {
                 await Navigator.push(
@@ -47,6 +50,8 @@ class _CoursesViewState extends State<CoursesView> {
                 setState(() {});
               },
             ),
+            )
+            
           );
         },
       ),

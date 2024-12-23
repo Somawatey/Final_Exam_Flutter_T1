@@ -18,8 +18,9 @@ class _AddScoreFormState extends State<AddScoreForm> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Add Score'),
+        backgroundColor: Colors.blue[700],
       ),
-      body: Padding(padding: EdgeInsets.all(16),
+      body: Padding(padding: const EdgeInsets.all(16),
       child: Form(
        key: _formKey,
        child: Column(
@@ -30,7 +31,7 @@ class _AddScoreFormState extends State<AddScoreForm> {
              decoration: const InputDecoration(labelText: 'Name'),
              validator: (value) {
                if (value == null || value.isEmpty) {
-                 return 'Please enter a name';
+                 return 'Must be between 1 and 50 characters';
                }
                return null;
              },
@@ -45,16 +46,13 @@ class _AddScoreFormState extends State<AddScoreForm> {
                }
                final score = double.tryParse(value);
                if (score == null || score < 0 || score > 100) {
-                 return 'Please enter a valid score';
+                 return 'Must be a score between 0 and 100';
                }
                return null;
              },
            ),
-           SizedBox(height: 16),
+           const SizedBox(height: 16),
             ElevatedButton(
-              style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.blue[700],
-              ),
               onPressed: () {
                 if (_formKey.currentState!.validate()) {
                   final newScore = StudentScore(
@@ -67,7 +65,10 @@ class _AddScoreFormState extends State<AddScoreForm> {
                   Navigator.pop(context, true);
                 }
               },
-              child: const Text('Add Score', style: TextStyle(color: Colors.white)),
+              child: SizedBox(
+                width: double.infinity,
+                 child: Center(child: Text('Add Score', style: TextStyle(color: Colors.purple[400]))),
+              )
             ),
          ],
        ),
