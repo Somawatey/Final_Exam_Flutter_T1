@@ -26,6 +26,7 @@ class _AddScoreFormState extends State<AddScoreForm> {
          children: [
            TextFormField(
              controller: _nameController,
+             maxLength: 50,
              decoration: const InputDecoration(labelText: 'Name'),
              validator: (value) {
                if (value == null || value.isEmpty) {
@@ -49,18 +50,25 @@ class _AddScoreFormState extends State<AddScoreForm> {
                return null;
              },
            ),
-           ElevatedButton(
-             onPressed: () {
-               if (_formKey.currentState!.validate()) {
-                 final name = _nameController.text;
-                 final score = double.parse(_scoreController.text);
-                 final studentScore = StudentScore(name: name, score: score);
-                 widget.course.studentScores.add(studentScore);
-                 Navigator.pop(context);
-               }
-             },
-             child: const Text('Add'),
-           ),
+           SizedBox(height: 16),
+            ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.blue[700],
+              ),
+              onPressed: () {
+                if (_formKey.currentState!.validate()) {
+                  final newScore = StudentScore(
+                    name: _nameController.text,
+                    score: double.parse(_scoreController.text),
+                  );
+                  setState(() {
+                    widget.course.studentScores.add(newScore);
+                  });
+                  Navigator.pop(context, true);
+                }
+              },
+              child: const Text('Add Score', style: TextStyle(color: Colors.white)),
+            ),
          ],
        ),
      ),

@@ -9,15 +9,13 @@ void main() {
 
 class MyApp extends StatelessWidget {
   MyApp({super.key});
-
-  // This widget is the root of your application.
     final courses = [
       Course(
         name: 'Math',
         studentScores: [
-          StudentScore(name: 'Alice', score: 85.0),
-          StudentScore(name: 'Bob', score: 78.0),
-          StudentScore(name: 'Charlie', score: 92.0),
+          StudentScore(name: 'kiki', score: 85.0),
+          StudentScore(name: 'mimi', score: 10.0),
+          StudentScore(name: 'tt', score: 92.0),
         ],
       ),
       Course(
@@ -30,12 +28,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
  
-      home: Scaffold(
-        appBar: AppBar(title: const Text('Score App')
-        ),
-        body: CoursesView(courses: courses),
-      ),
-      
-    );
+      home: CoursesView(courses: courses),
+      );
   }
 }
